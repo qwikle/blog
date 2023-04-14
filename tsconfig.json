@@ -36,7 +36,8 @@
       "@adonisjs/redis",
       "@adonisjs/auth",
       "@adonisjs/ally",
-      "@adonisjs/mail"
+      "@adonisjs/mail",
+      "@adonisjs/lucid-slugify"
     ]
   }
 }
