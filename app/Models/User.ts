@@ -1,8 +1,17 @@
 import { DateTime } from 'luxon'
 import Hash from '@ioc:Adonis/Core/Hash'
-import { column, beforeSave, BaseModel, hasMany, HasMany } from '@ioc:Adonis/Lucid/Orm'
+import {
+  column,
+  beforeSave,
+  BaseModel,
+  hasMany,
+  HasMany,
+  belongsTo,
+  BelongsTo,
+} from '@ioc:Adonis/Lucid/Orm'
 import Article from 'App/Models/Article'
 import Comment from 'App/Models/Comment'
+import Role from 'App/Models/Role'
 export default class User extends BaseModel {
   @column({ isPrimary: true })
   public id: number
@@ -15,6 +24,9 @@ export default class User extends BaseModel {
 
   @column()
   public avatarUrl: string | null
+
+  @column()
+  public username: string
 
   @column()
   public rememberMeToken: string | null
@@ -32,6 +44,9 @@ export default class User extends BaseModel {
   // user has many comments
   @hasMany(() => Comment)
   public comments: HasMany<typeof Comment>
+
+  @belongsTo(() => Role)
+  public role: BelongsTo<typeof Role>
 
   @beforeSave()
   public static async hashPassword(user: User) {
