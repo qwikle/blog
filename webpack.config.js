@@ -181,11 +181,11 @@ Encore.enablePostCssLoader()
 | sure to install the required dependencies.
 |
 */
-// Encore.enableVueLoader(() => {}, {
-//   version: 3,
-//   runtimeCompilerBuild: false,
-//   useJsx: false
-// })
+Encore.enableVueLoader(() => {}, {
+  version: 3,
+  runtimeCompilerBuild: false,
+  useJsx: false,
+})
 
 /*
 |--------------------------------------------------------------------------
@@ -203,6 +203,15 @@ config.infrastructureLogging = {
 }
 config.stats = 'errors-warnings'
 
+Encore.configureBabel(
+  (babelConfig) => {
+    babelConfig.plugins.push('styled-jsx/babel')
+    babelConfig.presets.push('@babel/preset-flow')
+  },
+  {
+    exclude: /node_modules/,
+  }
+)
 /*
 |--------------------------------------------------------------------------
 | Export config
