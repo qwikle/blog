@@ -10,6 +10,7 @@ export default class extends BaseSchema {
       table.string('username', 255).notNullable().unique()
       table.string('avatar_url').nullable()
       table.string('password', 180).notNullable()
+      table.boolean('is_banned').defaultTo(false)
       table.string('remember_me_token').nullable()
 
       /**

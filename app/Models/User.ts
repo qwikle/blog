@@ -29,6 +29,9 @@ export default class User extends BaseModel {
   public username: string
 
   @column()
+  public isBanned: boolean
+
+  @column()
   public rememberMeToken: string | null
 
   @column.dateTime({ autoCreate: true })

@@ -21,6 +21,9 @@ export default class Article extends BaseModel {
   public slug: string
 
   @column()
+  public status: 'published' | 'unpublished' | 'archived'
+
+  @column()
   public description: string
 
   @column()

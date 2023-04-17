@@ -11,6 +11,11 @@ export default class extends BaseSchema {
       table.string('description', 255).notNullable()
       table.string('body').notNullable()
       table.string('image_url').nullable()
+      table
+        .string('status', 255)
+        .notNullable()
+        .defaultTo('unpublished')
+        .checkIn(['published', 'unpublished', 'archived'])
       table.integer('user_id').unsigned().references('id').inTable('users').onDelete('CASCADE')
       table
         .integer('category_id')
