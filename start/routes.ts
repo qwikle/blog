@@ -18,6 +18,8 @@
 |
 */
 
+import './routes/category'
+
 import Route from '@ioc:Adonis/Core/Route'
 
 Route.get('/', async ({ view }) => {
