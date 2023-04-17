@@ -1,7 +1,7 @@
 import { schema, CustomMessages, rules } from '@ioc:Adonis/Core/Validator'
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
-export default class SignInValidator {
+export default class CategoryValidator {
   constructor(protected ctx: HttpContextContract) {}
 
   /*
@@ -24,13 +24,10 @@ export default class SignInValidator {
    *    ```
    */
   public schema = schema.create({
-    email: schema.string({ trim: true }, [
-      rules.email(),
-      rules.exists({ table: 'users', column: 'email', whereNot: { is_banned: true } }),
-    ]),
-    // password must be at least 8 characters 1 uppercase 1 lowercase 1 number
-    password: schema.string({ trim: true }, [
-      rules.regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/),
+    name: schema.string({ trim: true }, [
+      rules.minLength(3),
+      rules.maxLength(255),
+      rules.unique({ table: 'categories', column: 'name' }),
     ]),
   })
 
@@ -46,11 +43,9 @@ export default class SignInValidator {
    *
    */
   public messages: CustomMessages = {
-    'email.required': 'Vous devez renseigner un email',
-    'email.email': 'Vous devez renseigner un email valide',
-    'email.exists': "L'email n'existe pas",
-    'password.required': 'Vous devez renseigner un mot de passe',
-    'password.regex':
-      'Le mot de passe doit contenir au moins 8 caractères, 1 majuscule, 1 minuscule et 1 chiffre',
+    'name.required': 'Le nom de la catégorie est requis',
+    'name.minLength': 'Le nom de la catégorie doit faire au moins 3 caractères',
+    'name.maxLength': 'Le nom de la catégorie doit faire au plus 255 caractères',
+    'name.unique': 'Le nom de la catégorie est déjà utilisé',
   }
 }
