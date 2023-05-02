@@ -4,14 +4,9 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [require('daisyui')],
-
-  daisyui: {
-    themes: ['retro', 'luxury'],
-    base: true,
-    utils: true,
-    logs: true,
-    rtl: false,
-    darkTheme: 'luxury',
-  },
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/aspect-ratio'),
+  ],
 }
