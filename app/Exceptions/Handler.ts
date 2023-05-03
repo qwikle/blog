@@ -13,8 +13,11 @@
 |
 */
 
-import Logger from '@ioc:Adonis/Core/Logger'
+// app/Exceptions/Handler.ts
+
+import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import HttpExceptionHandler from '@ioc:Adonis/Core/HttpExceptionHandler'
+import Logger from '@ioc:Adonis/Core/Logger'
 
 export default class ExceptionHandler extends HttpExceptionHandler {
   protected statusPages = {
@@ -25,5 +28,22 @@ export default class ExceptionHandler extends HttpExceptionHandler {
 
   constructor() {
     super(Logger)
+  }
+
+  public async handle(error: any, ctx: HttpContextContract) {
+    const { session, response } = ctx
+
+    /**
+     * Handle failed authentication attempt
+     */
+    if (['E_INVALID_AUTH_PASSWORD', 'E_INVALID_AUTH_UID'].includes(error.code)) {
+      session.flash('errors', { login: error.message })
+      return response.redirect('/sign-in')
+    }
+
+    /**
+     * Forward rest of the exceptions to the parent class
+     */
+    return super.handle(error, ctx)
   }
 }

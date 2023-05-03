@@ -68,7 +68,7 @@ import Logo from '@/Components/Logo.vue'
 import { Bars3BottomRightIcon, XMarkIcon } from '@heroicons/vue/24/solid'
 const breakpoints = useBreakpoints(breakpointsTailwind)
 const isMobile = breakpoints.smaller('md')
-const isOpen = ref(true)
+const isOpen = ref(false)
 
 function openDrawer() {
   isOpen.value = true

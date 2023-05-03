@@ -1,7 +1,15 @@
 {
   "assets/app.css": "http://localhost:8080/assets/app.css",
   "assets/app.js": "http://localhost:8080/assets/app.js",
+  "assets/resources_js_src_Pages_auth_SignIn_vue-resources_js_src_Components_Header_vue-resources_js_sr-70dd74.css": "http://localhost:8080/assets/resources_js_src_Pages_auth_SignIn_vue-resources_js_src_Components_Header_vue-resources_js_sr-70dd74.css",
+  "assets/resources_js_src_Pages_auth_SignIn_vue-resources_js_src_Components_Header_vue-resources_js_sr-70dd74.js": "http://localhost:8080/assets/resources_js_src_Pages_auth_SignIn_vue-resources_js_src_Components_Header_vue-resources_js_sr-70dd74.js",
+  "assets/resources_js_src_Pages_home_vue-resources_js_src_Components_Header_vue-resources_js_src_Layou-9e7fde.css": "http://localhost:8080/assets/resources_js_src_Pages_home_vue-resources_js_src_Components_Header_vue-resources_js_src_Layou-9e7fde.css",
+  "assets/resources_js_src_Pages_home_vue-resources_js_src_Components_Header_vue-resources_js_src_Layou-9e7fde.js": "http://localhost:8080/assets/resources_js_src_Pages_home_vue-resources_js_src_Components_Header_vue-resources_js_src_Layou-9e7fde.js",
+  "assets/node_modules_heroicons_vue_24_solid_esm_EyeSlashIcon_js.js": "http://localhost:8080/assets/node_modules_heroicons_vue_24_solid_esm_EyeSlashIcon_js.js",
+  "assets/node_modules_heroicons_vue_24_solid_esm_EyeIcon_js.js": "http://localhost:8080/assets/node_modules_heroicons_vue_24_solid_esm_EyeIcon_js.js",
+  "assets/vendors-node_modules_heroicons_vue_24_solid_Bars3BottomRightIcon_js-node_modules_heroicons_vu-067374.js": "http://localhost:8080/assets/vendors-node_modules_heroicons_vue_24_solid_Bars3BottomRightIcon_js-node_modules_heroicons_vu-067374.js",
+  "assets/resources_js_src_Layouts_Base_vue.js": "http://localhost:8080/assets/resources_js_src_Layouts_Base_vue.js",
+  "assets/resources_js_src_Pages_auth_SignIn_vue.js": "http://localhost:8080/assets/resources_js_src_Pages_auth_SignIn_vue.js",
   "assets/resources_js_src_Pages_home_vue.css": "http://localhost:8080/assets/resources_js_src_Pages_home_vue.css",
-  "assets/resources_js_src_Pages_home_vue.js": "http://localhost:8080/assets/resources_js_src_Pages_home_vue.js",
-  "assets/vendors-node_modules_heroicons_vue_24_solid_Bars3BottomRightIcon_js-node_modules_heroicons_vu-067374.js": "http://localhost:8080/assets/vendors-node_modules_heroicons_vue_24_solid_Bars3BottomRightIcon_js-node_modules_heroicons_vu-067374.js"
+  "assets/resources_js_src_Pages_home_vue.js": "http://localhost:8080/assets/resources_js_src_Pages_home_vue.js"
 }

@@ -1,7 +1,9 @@
 <template>
-  <HeaderComponent />
+  <Base>
+    <p>Home</p>
+  </Base>
 </template>
-
 <script setup>
-import HeaderComponent from '@/Components/Header.vue'
+import Base from '@/Layouts/Base.vue'
 </script>
+<style scoped></style>

@@ -2,7 +2,11 @@
 module.exports = {
   content: ['./resources/**/*.{edge,js,ts,jsx,tsx,vue}'],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        inter: ['Inter', 'sans-serif'],
+      },
+    },
   },
   plugins: [
     require('@tailwindcss/forms'),
