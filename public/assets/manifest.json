@@ -3,6 +3,5 @@
   "assets/app.js": "http://localhost:8080/assets/app.js",
   "assets/resources_js_src_Pages_home_vue.css": "http://localhost:8080/assets/resources_js_src_Pages_home_vue.css",
   "assets/resources_js_src_Pages_home_vue.js": "http://localhost:8080/assets/resources_js_src_Pages_home_vue.js",
-  "assets/vendors-node_modules_heroicons_vue_24_solid_Bars3BottomRightIcon_js-node_modules_vue-loader_d-517855.js": "http://localhost:8080/assets/vendors-node_modules_heroicons_vue_24_solid_Bars3BottomRightIcon_js-node_modules_vue-loader_d-517855.js",
   "assets/vendors-node_modules_heroicons_vue_24_solid_Bars3BottomRightIcon_js-node_modules_heroicons_vu-067374.js": "http://localhost:8080/assets/vendors-node_modules_heroicons_vue_24_solid_Bars3BottomRightIcon_js-node_modules_heroicons_vu-067374.js"
 }
