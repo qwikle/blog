@@ -18,14 +18,6 @@ const page = usePage()
 
 const message = computed(() => page.props.error || page.props.success)
 
-const type = computed(() => {
-  if (page.props.error) {
-    return 'error'
-  }
-
-  if (page.props.success) {
-    return 'success'
-  }
-})
+const type = computed(() => (page.props.error ? 'error' : 'success'))
 </script>
 <style scoped></style>
