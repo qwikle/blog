@@ -1,9 +1,13 @@
 <template>
   <Base>
     <section
-      class="w-5/6 mx-auto shadow-sm rounded-md max-h-96 flex justify-center py-8 my-24 bg-white"
+      class="w-5/6 max-w-lg mx-auto shadow-sm rounded-md flex justify-center py-8 my-20 bg-white relative"
     >
-      <form @submit.prevent="signIn()" class="flex items-center flex-col gap-y-6 w-3/4">
+      <h1 class="absolute -top-16 text-4xl font-extrabold text-amber-500">Connexion</h1>
+      <form @submit.prevent="signIn" class="flex items-center flex-col gap-y-6 w-3/4">
+        <FadeTransition>
+          <Alert v-if="$page.props.error || $page.props.success" />
+        </FadeTransition>
         <Input
           v-for="input in forms"
           :form="input"
@@ -18,11 +22,7 @@
           </div>
           <a href="#" class="text-amber-500 hover:text-amber-600">Mot de passe oublié ?</a>
         </div>
-        <button
-          class="bg-amber-500 text-gray-50 w-full h-10 rounded hover:bg-amber-600 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none"
-        >
-          Connexion
-        </button>
+        <Button :disabled="isDisabled" class="w-full"> Se connecter </Button>
       </form>
     </section>
   </Base>
@@ -30,10 +30,13 @@
 <script setup>
 import Base from '@/Layouts/Base.vue'
 import Input from '@/Components/Input.vue'
-import { ref } from 'vue'
+import Button from '@/Components/Button.vue'
+import FadeTransition from '@/Components/transitions/FadeTransition.vue'
+import Alert from '@/Components/Alert.vue'
+import { ref, computed } from 'vue'
 import { useForm } from '@inertiajs/vue3'
-const forms = ref([
-  {
+const forms = ref({
+  email: {
     label: 'Email',
     type: 'email',
     id: 'email',
@@ -41,7 +44,7 @@ const forms = ref([
     isPassword: false,
     error: null,
   },
-  {
+  password: {
     label: 'Mot de passe',
     type: 'password',
     id: 'password',
@@ -49,13 +52,18 @@ const forms = ref([
     isPassword: true,
     error: null,
   },
-])
+})
+
+const isDisabled = computed(() => {
+  return Object.values(forms.value).some((form) => form.model === '')
+})
+
 const rememberMe = ref(false)
 function signIn() {
   const user = useForm({
-    email: forms.value[0].model,
-    password: forms.value[1].model,
-    remember: rememberMe.value,
+    email: forms.value.email.model,
+    password: forms.value.password.model,
+    rememberMe: rememberMe.value,
   })
   user.post('sign-in', {
     preserveState: true,
@@ -63,16 +71,13 @@ function signIn() {
       user.reset()
     },
     onError: (errors) => {
-      forms.value.forEach((form) => {
-        form.error = null
-      })
-      Object.keys(errors).forEach((key) => {
-        forms.value.forEach((form) => {
-          if (form.id === key) {
-            form.error = errors[key][0]
-          }
+      if (errors.auth) {
+        console.log(errors.auth)
+      } else {
+        Object.keys(errors).forEach((key) => {
+          forms.value[key].error = errors[key][0]
         })
-      })
+      }
     },
   })
 }
