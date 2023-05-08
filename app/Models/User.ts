@@ -28,6 +28,9 @@ export default class User extends BaseModel {
   @column()
   public username: string
 
+  @column({ serializeAs: null })
+  public roleId: number
+
   @column()
   public isBanned: boolean
 
