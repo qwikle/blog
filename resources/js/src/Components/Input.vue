@@ -11,6 +11,7 @@
         :class="{
           'border-red-500': error,
         }"
+        :autocomplete="autocomplete"
       />
       <template v-if="isPassword">
         <EyeIcon
@@ -25,12 +26,13 @@
         />
       </template>
     </div>
-    <Transition name="fade" mode="in-out" appear>
+    <FadeTransition>
       <p v-if="error" class="text-xs text-red-500 mt-2">{{ error }}</p>
-    </Transition>
+    </FadeTransition>
   </div>
 </template>
 <script setup>
+import FadeTransition from '@/Components/transitions/FadeTransition.vue'
 import { ref } from 'vue'
 defineEmits(['update:modelValue', 'togglePassword'])
 import { EyeIcon, EyeSlashIcon } from '@heroicons/vue/24/solid'
@@ -51,18 +53,11 @@ const props = defineProps({
   },
 })
 
+const autocomplete = props.isPassword ? 'current-password' : props.form.type
+
 const reactiveType = ref(props.form.type)
 function togglePassword() {
   reactiveType.value = reactiveType.value === 'password' ? 'text' : props.form.type
 }
 </script>
-<style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
-}
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-</style>
+<style scoped></style>
