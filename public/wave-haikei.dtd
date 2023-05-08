@@ -1,0 +1,11 @@
+<!ELEMENT svg (path)>
+<!ATTLIST svg id NMTOKEN #REQUIRED>
+<!ATTLIST svg viewBox CDATA #REQUIRED>
+<!ATTLIST svg width NMTOKEN #REQUIRED>
+<!ATTLIST svg height NMTOKEN #REQUIRED>
+<!ATTLIST svg version NMTOKEN #REQUIRED>
+<!ELEMENT path EMPTY>
+<!ATTLIST path d CDATA #REQUIRED>
+<!ATTLIST path fill CDATA #REQUIRED>
+<!ATTLIST path stroke-linecap NMTOKEN #REQUIRED>
+<!ATTLIST path stroke-linejoin NMTOKEN #REQUIRED>
