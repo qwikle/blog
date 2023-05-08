@@ -26,5 +26,8 @@ Route.get('/', async ({ inertia }) => {
   return inertia.render('home')
 })
 
-Route.inertia('/sign-in', 'auth/SignIn')
-Route.post('/sign-in', 'AuthController.signIn')
+Route.get('/sign-in', 'AuthController.getSignIn').middleware('guest')
+Route.post('/sign-in', 'AuthController.signIn').middleware('guest')
+Route.get('/sign-up', 'AuthController.getSignUp').middleware('guest')
+Route.post('/sign-up', 'AuthController.signUp').middleware('guest')
+Route.get('/sign-out', 'AuthController.signOut').middleware('auth')
