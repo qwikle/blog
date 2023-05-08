@@ -24,14 +24,10 @@ export default class SignInValidator {
    *    ```
    */
   public schema = schema.create({
-    email: schema.string({ trim: true }, [
-      rules.email(),
-      rules.exists({ table: 'users', column: 'email', whereNot: { is_banned: true } }),
-    ]),
+    email: schema.string({ trim: true }, [rules.email()]),
     // password must be at least 8 characters 1 uppercase 1 lowercase 1 number
-    password: schema.string({ trim: true }, [
-      rules.regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/),
-    ]),
+    password: schema.string({ trim: true }),
+    rememberMe: schema.boolean.optional(),
   })
 
   /**
@@ -48,9 +44,6 @@ export default class SignInValidator {
   public messages: CustomMessages = {
     'email.required': 'Vous devez renseigner un email',
     'email.email': 'Vous devez renseigner un email valide',
-    'email.exists': "L'email n'existe pas",
     'password.required': 'Vous devez renseigner un mot de passe',
-    'password.regex':
-      'Le mot de passe doit contenir au moins 8 caractères, 1 majuscule, 1 minuscule et 1 chiffre',
   }
 }
