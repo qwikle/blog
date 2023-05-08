@@ -15,6 +15,7 @@ Inertia.share({
     return ctx.session.flashMessages.get('errors')
   },
   params: ({ params }) => params,
-  auth: ({ auth }) => auth?.user,
-  flash: ({ session }) => session.flashMessages.get('message'),
+  user: ({ auth }) => auth?.user,
+  error: ({ session }) => session.flashMessages.get('error'),
+  success: ({ session }) => session.flashMessages.get('success'),
 }).version(() => Inertia.manifestFile('public/assets/manifest.json'))
