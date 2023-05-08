@@ -50,10 +50,12 @@ export default class SignUpValidator {
   public messages: CustomMessages = {
     'email.required': 'Vous devez renseigner un email',
     'email.email': 'Vous devez renseigner un email valide',
-    'email.unique': "L'email est déjà utilisé",
+    'email.unique': "L'adresse email est déjà utilisée",
     'password.required': 'Vous devez renseigner un mot de passe',
     'password.regex':
       'Le mot de passe doit contenir au moins 8 caractères, 1 majuscule, 1 minuscule et 1 chiffre',
     'password.confirmed': 'Les mots de passe ne correspondent pas',
+    'username.required': "Vous devez renseigner un nom d'utilisateur",
+    'username.unique': "Le nom d'utilisateur est déjà utilisé",
   }
 }
