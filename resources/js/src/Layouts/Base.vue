@@ -1,27 +1,32 @@
 <template>
   <Header :urls="urls" />
-  <Transition name="fade" mode="out-in" appear>
+  <FadeTransition>
     <main :key="$page.url" class="container w-full h-full pt-4 mx-auto">
       <slot></slot>
     </main>
-  </Transition>
+  </FadeTransition>
   <footer></footer>
 </template>
 <script setup>
 import Header from '@/Components/Header.vue'
-const urls = [
-  { href: '/sign-in', title: 'Connexion' },
-  { href: '/sign-up', title: 'Inscription' },
-]
-</script>
-<style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
-}
+import FadeTransition from '@/Components/transitions/FadeTransition.vue'
+import { computed } from 'vue'
+import { usePage } from '@inertiajs/vue3'
 
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-</style>
+const page = usePage()
+const user = computed(() => page.props.user)
+const urls = computed(() => {
+  if (user.value) {
+    return [
+      { title: 'Mon compte', href: '/account' },
+      { title: 'Déconnexion', href: '/sign-out' },
+    ]
+  }
+
+  return [
+    { title: 'Connexion', href: '/sign-in' },
+    { title: "S'inscrire", href: '/sign-up' },
+  ]
+})
+</script>
+<style scoped></style>
