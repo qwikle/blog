@@ -19,6 +19,7 @@ const urls = computed(() => {
   if (user.value) {
     return [
       { title: 'Mon compte', href: '/account' },
+      user.value.role.name === 'admin' ? { title: 'Administration', href: '/admin' } : null,
       { title: 'Déconnexion', href: '/sign-out' },
     ]
   }
